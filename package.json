@@ -1,0 +1,44 @@
+{
+  "name": "react-isomorphic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_PATH=$NODE_PATH:./shared node --harmony .",
+    "dev": "npm run start & webpack-dev-server --progress --color",
+    "build": "NODE_ENV=production webpack --progress --color -p --config webpack.prod.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkanchamreddy/react-isomorphic.git"
+  },
+  "author": "kkanchamreddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkanchamreddy/react-isomorphic/issues"
+  },
+  "homepage": "https://github.com/kkanchamreddy/react-isomorphic#readme",
+  "dependencies": {
+    "axios": "^0.9.1",
+    "babel": "^6.5.2",
+    "express": "^4.13.4",
+    "history": "^2.0.0",
+    "immutable": "^3.7.6",
+    "object-assign": "^4.0.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.0",
+    "react-router": "^2.0.0",
+    "redux": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.5.2",
+    "babel-eslint": "^4.1.8",
+    "babel-loader": "^6.2.2",
+    "eslint": "^2.0.0",
+    "eslint-plugin-react": "^3.16.1",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
