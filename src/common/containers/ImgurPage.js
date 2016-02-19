@@ -11,7 +11,8 @@ Imgur.need = [
 ]
 
 function mapStateToProps(state) {
-
+  console.log('State from imgur', state);
+  return state;
 }
 
 function mapDispatchToProps(dispatch) {
