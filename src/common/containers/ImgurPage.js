@@ -6,7 +6,7 @@ import * as ImgurActions from '../actions/imgur';
 
 //Data that needs to be called before rendering the component
 //This is used for server side rendering via the fetchComponentDataBeforeRending() method
-Reddit.need = [
+Imgur.need = [
   ImgurActions.fetchPosts
 ]
 
