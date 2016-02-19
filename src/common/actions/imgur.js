@@ -1,4 +1,5 @@
-var axios = require('axios');
+//var axios = require('axios');
+import axios from 'axios';
 
 export const SELECT_IMGUR = 'SELECT_IMGUR';
 export const INVALIDATE_IMGUR = 'INVALIDATE_IMGUR';
