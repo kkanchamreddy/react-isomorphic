@@ -1,10 +1,11 @@
 //var axios = require('axios');
 import axios from 'axios';
 
-export const SELECT_IMGUR = 'SELECT_IMGUR';
+export const SELECT_IMGUR_TOPIC = 'SELECT_IMGUR_TOPIC';
+export const FETCH_TOPICS = 'FETCH_TOPICS';
 export const INVALIDATE_IMGUR = 'INVALIDATE_IMGUR';
 
-export const POSTS_GET = 'POSTS_GET';
+export const TOPICS_GET = 'TOPICS_GET';
 export const POSTS_GET_REQUEST = 'POSTS_GET_REQUEST';
 export const POSTS_GET_SUCCESS = 'POSTS_GET_SUCCESS';
 export const POSTS_GET_FAILURE = 'POSTS_GET_FAILURE';
@@ -21,9 +22,9 @@ const defaultConfig = {
 
 
 
-export function selectImgur(imgur) {
+export function selectImgurTopic(imgur) {
   return {
-    type: SELECT_IMGUR,
+    type: SELECT_IMGUR_TOPIC,
     imgur
   };
 }
@@ -35,10 +36,10 @@ export function invalidateImgur(reddit) {
   };
 }
 
-export function fetchPosts(imgur = 'reactjs') {
+export function fetchTopics(imgur = 'reactjs') {
   return {
-    type: POSTS_GET,
+    type: TOPICS_GET,
     imgur,
-    promise: axios(`https://api.imgur.com/3/`,defaultConfig)
+    promise: axios(rootUrl +'topics/defaults',defaultConfig)
   }
 }
