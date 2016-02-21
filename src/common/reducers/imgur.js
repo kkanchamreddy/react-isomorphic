@@ -40,12 +40,13 @@ export function fetchImgurTopics(state = 'reactjs', action) {
   case TOPICS_GET_SUCCESS:
     let topicsArray = [];
     if(action.req && action.req.data){
-      let data = action.req.data.data;
-      topicsArray = data.children.map(child => child.data);
+      topicsArray = action.req.data.data;
+      
+      //topicsArray = data.children.map(child => child.data);
     }
-    console.log(topicsArray);
+
     return Object.assign({}, state, {
-      [action.imgur]: posts(state[action.reddit], {
+      [action.imgur]: posts(state[action.imgur], {
         type: action.type,
         imgur: action.imgur,
         topics: topicsArray,
