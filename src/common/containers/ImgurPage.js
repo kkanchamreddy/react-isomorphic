@@ -11,10 +11,9 @@ Imgur.need = [
 ]
 
 function mapStateToProps(state) {
-  console.log('State in imgur page: ', state);
-  let { topics } = state;
-  topics = topics.present;
-  return { topics };
+  let { imgur } = state;
+  imgur = imgur.present;
+  return { imgur };
 }
 
 function mapDispatchToProps(dispatch) {

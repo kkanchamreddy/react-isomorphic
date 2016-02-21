@@ -34,18 +34,16 @@ function posts(state = {
 }
 
 
-export function fetchImgurTopics(state = 'reactjs', action) {
+export function fetchImgurTopics(state = { }, action) {
   switch (action.type) {
   case TOPICS_GET_REQUEST:
   case TOPICS_GET_SUCCESS:
     let topicsArray = [];
     if(action.req && action.req.data){
       topicsArray = action.req.data.data;
-      
-      //topicsArray = data.children.map(child => child.data);
     }
 
-    return Object.assign({}, state, {
+    var finalObj = Object.assign({}, state, {
       [action.imgur]: posts(state[action.imgur], {
         type: action.type,
         imgur: action.imgur,
@@ -53,6 +51,10 @@ export function fetchImgurTopics(state = 'reactjs', action) {
         receivedAt: Date.now()
       })
     });
+    //console.log('action.type---', state[action.imgur]);
+    //console.log('action.imgur---', action.imgur);
+    console.log('finalObj----', finalObj);
+    return finalObj;
 
   default:
     return state;
