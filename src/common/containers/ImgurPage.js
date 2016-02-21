@@ -7,12 +7,14 @@ import * as ImgurActions from '../actions/imgur';
 //Data that needs to be called before rendering the component
 //This is used for server side rendering via the fetchComponentDataBeforeRending() method
 Imgur.need = [
-  ImgurActions.fetchPosts
+  ImgurActions.fetchTopics
 ]
 
 function mapStateToProps(state) {
-  console.log('State from imgur', state);
-  return state;
+  console.log('State in imgur page: ', state);
+  let { topics } = state;
+  topics = topics.present;
+  return { topics };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -1,17 +1,7 @@
 import {
   SELECT_IMGUR_TOPIC,
-  FETCH_TOPICS,
-  TOPICS_GET
+  TOPICS_GET, TOPICS_GET_REQUEST, TOPICS_GET_SUCCESS, TOPICS_GET_FAILURE
 } from '../actions/imgur';
-
-export function selectedReddit(state = 'reactjs', action) {
-  switch (action.type) {
-  case SELECT_REDDIT:
-    return action.reddit;
-  default:
-    return state;
-  }
-}
 
 function posts(state = {
   error: {},
@@ -20,27 +10,49 @@ function posts(state = {
   items: []
 }, action) {
   switch (action.type) {
-  case INVALIDATE_REDDIT:
-    return Object.assign({}, state, {
-      didInvalidate: true
-    });
-  case POSTS_GET_REQUEST:
+
+  case TOPICS_GET_REQUEST:
     return Object.assign({}, state, {
       isFetching: true,
       didInvalidate: false
     });
-  case POSTS_GET_SUCCESS:
+  case TOPICS_GET_SUCCESS:
     return Object.assign({}, state, {
       isFetching: false,
       didInvalidate: false,
-      items: action.posts,
+      items: action.topics,
       lastUpdated: action.receivedAt
     });
-  case POSTS_GET_FAILURE:
+  case TOPICS_GET_FAILURE:
     return Object.assign({}, state, {
       isFetching: false,
       didInvalidate: false
     });
+  default:
+    return state;
+  }
+}
+
+
+export function fetchImgurTopics(state = 'reactjs', action) {
+  switch (action.type) {
+  case TOPICS_GET_REQUEST:
+  case TOPICS_GET_SUCCESS:
+    let topicsArray = [];
+    if(action.req && action.req.data){
+      let data = action.req.data.data;
+      topicsArray = data.children.map(child => child.data);
+    }
+    console.log(topicsArray);
+    return Object.assign({}, state, {
+      [action.imgur]: posts(state[action.reddit], {
+        type: action.type,
+        imgur: action.imgur,
+        topics: topicsArray,
+        receivedAt: Date.now()
+      })
+    });
+
   default:
     return state;
   }

@@ -2,13 +2,12 @@
 import axios from 'axios';
 
 export const SELECT_IMGUR_TOPIC = 'SELECT_IMGUR_TOPIC';
-export const FETCH_TOPICS = 'FETCH_TOPICS';
 export const INVALIDATE_IMGUR = 'INVALIDATE_IMGUR';
 
 export const TOPICS_GET = 'TOPICS_GET';
-export const POSTS_GET_REQUEST = 'POSTS_GET_REQUEST';
-export const POSTS_GET_SUCCESS = 'POSTS_GET_SUCCESS';
-export const POSTS_GET_FAILURE = 'POSTS_GET_FAILURE';
+export const TOPICS_GET_REQUEST = 'TOPICS_GET_REQUEST';
+export const TOPICS_GET_SUCCESS = 'TOPICS_GET_SUCCESS';
+export const TOPICS_GET_FAILURE = 'TOPICS_GET_FAILURE';
 
 
 //var rootUrl
