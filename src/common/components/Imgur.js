@@ -2,10 +2,11 @@ import React, {Component, propTypes} from 'react';
 
 class Imgur extends Component {
   render() {
-    const { selectedReddit, posts, isFetching, lastUpdated, error } = this.props;
+    const { topics } = this.props;
+    console.log('----this.props---', this.props);
     return (
       <div className="imgur-container">
-        Hello I am still under Construction
+        <TopicList/>
       </div>
     );
   }

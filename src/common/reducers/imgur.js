@@ -42,7 +42,7 @@ export function fetchImgurTopics(state = { }, action) {
     if(action.req && action.req.data){
       topicsArray = action.req.data.data;
     }
-
+    console.log('action.state----', state[action.imgur]);
     var finalObj = Object.assign({}, state, {
       [action.imgur]: posts(state[action.imgur], {
         type: action.type,
@@ -51,9 +51,6 @@ export function fetchImgurTopics(state = { }, action) {
         receivedAt: Date.now()
       })
     });
-    //console.log('action.type---', state[action.imgur]);
-    //console.log('action.imgur---', action.imgur);
-    console.log('finalObj----', finalObj);
     return finalObj;
 
   default:
