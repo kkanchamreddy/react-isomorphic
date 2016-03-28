@@ -2,6 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 var merge = require('merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var nodeModulesPath = path.resolve(__dirname, 'node_modules');
+var containersPath = path.resolve(__dirname, 'src/common/containers');
 
 var webpackConfig = {
   output: {
@@ -40,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
       }),
       new ExtractTextPlugin("app.css"),
       new webpack.optimize.UglifyJsPlugin({minimize: true})
-    ]  
+    ]
   });
 
 }else{
@@ -51,7 +53,7 @@ if (process.env.NODE_ENV === 'production') {
       loaders: [{
         test: /\.js$/,
         loader: 'babel',
-        exclude: /node_modules/,
+        exclude: [nodeModulesPath],
         include: __dirname,
         query: {
           optional: ['runtime'],
@@ -87,9 +89,9 @@ if (process.env.NODE_ENV === 'production') {
     ],
     plugins : [
       new webpack.HotModuleReplacementPlugin()
-    ]  
+    ]
   });
-  
+
 }
 
 module.exports = webpackConfig;
