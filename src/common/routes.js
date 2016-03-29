@@ -15,6 +15,10 @@ import AboutPage from "./components/About";
 import error404 from "./components/404";
 
 function lazyLoadComponent(component) {
+  
+  if(typeof window === 'undefined') {
+     require(component);
+  }
   return function(location, cb) {
     require.ensure([], function (require) {
       cb(null, require(component));
