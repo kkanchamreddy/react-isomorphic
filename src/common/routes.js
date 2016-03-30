@@ -15,9 +15,9 @@ import AboutPage from "./components/About";
 import error404 from "./components/404";
 
 function lazyLoadComponent(component) {
-  
+
   if(typeof window === 'undefined') {
-     require(component);
+    return require(component);
   }
   return function(location, cb) {
     require.ensure([], function (require) {
@@ -29,7 +29,10 @@ function lazyLoadComponent(component) {
 export default (
   <Route name="app" path="/" component={App}>
       <Route path="home" component={HomePage} />
-      <Route path="reddit" getComponent={lazyLoadComponent('./containers/RedditPage')} />
+      <Route path="reddit" getComponent={(location, cb) => {
+          cb(null, require('./containers/RedditPage'));
+        }}
+      />
       <Route path="imgur" component={ImgurPage} />
       <Route path="todo" getComponent={(location, cb) => {
             cb(null, TodoPage)
