@@ -6,7 +6,8 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import React from 'react';
-import { RoutingContext, match } from 'react-router';
+import { renderToString } from 'react-dom/server';
+import { RouterContext, match } from 'react-router';
 import { Provider } from 'react-redux';
 import createLocation from 'history/lib/createLocation';
 import { fetchComponentDataBeforeRender } from '../common/api/fetchComponentDataBeforeRender';
@@ -70,7 +71,7 @@ app.get('/*', function (req, res) {
         const InitialView = (
           <Provider store={store}>
             {() =>
-              <RoutingContext {...renderProps} />
+              <RouterContext {...renderProps} />
             }
           </Provider>
         );
@@ -78,7 +79,7 @@ app.get('/*', function (req, res) {
         //This method waits for all render component promises to resolve before returning to browser
         fetchComponentDataBeforeRender(store.dispatch, renderProps.components, renderProps.params)
           .then(html => {
-            const componentHTML = React.renderToString(InitialView);
+            const componentHTML = renderToString(InitialView);
             const initialState = store.getState();
             res.status(200).end(renderFullPage(componentHTML,initialState))
           })
