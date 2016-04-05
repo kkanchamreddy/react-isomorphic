@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DataTable from './DataTable';
 
 class Home extends Component {
 
@@ -6,9 +7,9 @@ class Home extends Component {
     return (
 
       	<div className="posts">
-  
+
   			<div className="post">
-			    <h1 className="post-title">Introducing Redux Universal example</h1>
+			    <h1 className="post-title">Introducing Redux1 Universal example</h1>
     			<p>The theme has been based on <a href="http://lanyon.getpoole.com/">Lanyon</a> which in turn is based on <a href="http://getpoole.com">Poole</a>.</p>
 
 				<h3>Template features</h3>
@@ -36,7 +37,7 @@ class Home extends Component {
 				<p>This is a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above.</p>
 
 			</div>
-  
+
 		  	<div className="post">
 			    <h1 className="post-title">Example content</h1>
 
@@ -142,9 +143,11 @@ class Home extends Component {
 				  </tbody>
 				</table>
 
+				<DataTable/>
+
   			</div>
   		</div>
-  
+
     );
   }
 }
