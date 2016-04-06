@@ -21,11 +21,10 @@ class DataTable extends React.Component {
 
     this.state = {
       myTableData: [
-        {name: 'Rylan-1', 'lname': 'Doe'},
-        {name: 'Amelia', 'lname': 'Doe'},
-        {name: 'Estevan', 'lname': 'Doe'},
-        {name: 'Florence', 'lname': 'Doe'},
-        {name: 'Tressa', 'lname': 'Doe'}
+        {name: 'Luke Skywalker', hair_color: 'blond', eye_color:'blue'},
+        {name: 'Luke Skywalker', hair_color: 'blond', eye_color:'blue'},
+        {name: 'Luke Skywalker', hair_color: 'blond', eye_color:'blue'},
+        {name: 'Luke Skywalker', hair_color: 'blond', eye_color:'blue'},
       ]
     };
   }
@@ -49,11 +48,21 @@ class DataTable extends React.Component {
         />
 
         <Column
-          header={<Cell>Year</Cell>}
+          header={<Cell>Hair Color</Cell>}
           width={100}
           cell={props => (
             <Cell {...props}>
-              {this.state.myTableData[props.rowIndex].lname}
+              {this.state.myTableData[props.rowIndex].hair_color}
+            </Cell>
+          )}
+        />
+
+        <Column
+          header={<Cell>Eye Color</Cell>}
+          width={100}
+          cell={props => (
+            <Cell {...props}>
+              {this.state.myTableData[props.rowIndex].eye_color}
             </Cell>
           )}
         />
