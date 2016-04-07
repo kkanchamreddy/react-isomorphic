@@ -5,7 +5,7 @@ import App from "./containers/App";
 
 //Redux Smart
 import CounterPage from "./containers/CounterPage";
-//import RedditPage from "./containers/RedditPage";
+import RedditPage from "./containers/RedditPage";
 import TodoPage from "./containers/TodoPage";
 import ImgurPage from "./containers/ImgurPage";
 
@@ -26,12 +26,7 @@ function lazyLoadComponent(component) {
 export default (
   <Route name="app" path="/" component={App}>
       <Route path="home" component={HomePage} />
-      <Route path="reddit" getComponent={(location, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./containers/RedditPage').default);
-        });
-      }}
-      />
+      <Route path="reddit" component={RedditPage}/>
       <Route path="imgur" component={ImgurPage} />
       <Route path="todo" getComponent={(location, cb) => {
             cb(null, TodoPage)
