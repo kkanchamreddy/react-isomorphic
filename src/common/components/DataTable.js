@@ -1,19 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Table, Column, Cell} from 'fixed-data-table';
 
-// Table data as a list of array.
-var rows = [
-	[1, "Citizen Kane","1","1941"],
-];
-
-function rowGetter(rowIndex) {
-  return rows[rowIndex];
-}
-
-function rowGetter(rowIndex) {
-  return rows[rowIndex];
-}
 
 class DataTable extends React.Component {
   constructor(props) {
