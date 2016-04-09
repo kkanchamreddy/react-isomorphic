@@ -8,6 +8,7 @@ import CounterPage from "./containers/CounterPage";
 import RedditPage from "./containers/RedditPage";
 import TodoPage from "./containers/TodoPage";
 import ImgurPage from "./containers/ImgurPage";
+import SwapiPage from "./containers/SwapiPage";
 
 //Redux Dumb
 import HomePage from "./components/Home";
@@ -33,6 +34,7 @@ export default (
       }} />
       <Route path="counter" component={CounterPage} />
       <Route path="about" component={AboutPage} />
+      <Route path="swapi" component={SwapiPage} />
       <Route path="*" component={error404}/>
   </Route>
 );
