@@ -9,6 +9,7 @@ import todos from './todos';
 import version from './version';
 import { selectedReddit, postsByReddit } from './reddit';
 import { fetchImgurTopics } from './imgur';
+import { swapiPeople } from './swapi';
 
 const rootReducer = combineReducers({
   user : user,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   selectedReddit : undoable(selectedReddit),
   postsByReddit : undoable(postsByReddit),
   router : routerStateReducer,
-  imgur: undoable(fetchImgurTopics)
+  imgur: undoable(fetchImgurTopics),
+  swapi: undoable(swapiPeople)
 });
 
 export default rootReducer;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DataTable from './DataTable';
 
 class People extends Component {
 	constructor(props) {
@@ -57,3 +56,5 @@ class People extends Component {
 	}
 
 }
+
+export default People;

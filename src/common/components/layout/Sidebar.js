@@ -27,11 +27,12 @@ class Sidebar extends Component {
 		    <Link to="/todo" className="sidebar-nav-item" activeClassName="active">Todo <span className="nav-note">[stateful]</span></Link>
 		    <Link to="/counter" className="sidebar-nav-item" activeClassName="active">Counter <span className="nav-note">[stateful]</span></Link>
 		    <Link to="/about" className="sidebar-nav-item" activeClassName="active">About <span className="nav-note">[static]</span></Link>
+				<Link to="/swapi" className="sidebar-nav-item" activeClassName="active">Swapi <span className="nav-note">[api]</span></Link>
 		    <span className="sidebar-nav-item"><span className="nav-note version">{`Currently version ${version}`}</span></span>
 		  </nav>
 
 		  <div className="sidebar-item sidebar-footer">
-		  
+
 		  </div>
 
 		</div>

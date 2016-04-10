@@ -1,7 +1,7 @@
 import request from 'axios';
 
 
-export const INVALIDATE_SWAPI = 'INVALIDATE_REDDIT';
+export const INVALIDATE_SWAPI = 'INVALIDATE_SWAPI';
 
 export const PEOPLE_GET = 'PEOPLE_GET';
 export const PEOPLE_GET_REQUEST = 'PEOPLE_GET_REQUEST';
@@ -10,10 +10,10 @@ export const PEOPLE_GET_FAILURE = 'PEOPLE_GET_FAILURE';
 
 
 
-export function invalidateSwapi(reddit) {
+export function invalidateSwapi(swapi) {
   return {
     type: INVALIDATE_SWAPI,
-    reddit
+    swapi
   };
 }
 
@@ -26,7 +26,7 @@ export function fetchPeople(swapi = 'reactjs') {
 }
 
 function shouldFetchPeople(state, swapi) {
-  const people = state.peopleOfSwapi[swapi];
+  const people = state.swapi;
   if (!people) {
     return true;
   } else if (people.isFetching) {
@@ -39,7 +39,7 @@ function shouldFetchPeople(state, swapi) {
 export function fetchPeopleIfNeeded(swapi) {
   return (dispatch, getState) => {
     if (shouldFetchPeople(getState(), swapi)) {
-      return dispatch(fetchPosts(swapi));
+      return dispatch(fetchPeople(swapi));
     }
   };
 }

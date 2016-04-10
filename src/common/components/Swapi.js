@@ -5,35 +5,19 @@ import { connect } from 'react-redux';
 class Swapi extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleRefreshClick = this.handleRefreshClick.bind(this);
   }
 
   componentDidMount() {
-    const { selectedReddit } = this.props;
-    this.props.fetchPostsIfNeeded(selectedReddit);
+    this.props.fetchPeopleIfNeeded();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedReddit !== this.props.selectedReddit) {
-      const { selectedReddit } = nextProps;
-      this.props.fetchPostsIfNeeded(selectedReddit);
-    }
+
   }
 
-  handleChange(nextReddit) {
-    this.props.selectReddit(nextReddit);
-  }
-
-  handleRefreshClick(e) {
-    e.preventDefault();
-    const { selectedReddit } = this.props;
-    this.props.invalidateReddit(selectedReddit);
-    this.props.fetchPostsIfNeeded(selectedReddit);
-  }
 
   render () {
-		const { selectedReddit, posts, isFetching, lastUpdated, error } = this.props;
+		const { people, isFetching, lastUpdated, error } = this.props;
 		return (
 			<div>
 
@@ -63,4 +47,4 @@ Swapi.propTypes = {
   lastUpdated: PropTypes.number
 };
 
-export default Reddit;
+export default Swapi;
