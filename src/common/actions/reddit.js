@@ -23,7 +23,6 @@ export function invalidateReddit(reddit) {
 }
 
 export function fetchPosts(reddit = 'reactjs') {
-  console.log('-----Inside fetchPosts-----', reddit);
   return {
     type: POSTS_GET,
     reddit,
