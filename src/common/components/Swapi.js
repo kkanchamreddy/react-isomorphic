@@ -1,10 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import People from './swapi/People';
 
+const defaultProps = {
+  people: [],
+  error: false,
+  isFetching: false
+}
+
+const getOriginalState = function() {
+  var defaultProps = Swapi.defaultProps;
+  return Object.assign({}, defaultProps);
+}
 
 class Swapi extends Component {
   constructor(props) {
     super(props);
+    this.initVars();
+  }
+
+  initVars(props) {
+    this.state = Object.assign({}, Swapi.defaultProps);
   }
 
   componentDidMount() {
@@ -17,7 +33,7 @@ class Swapi extends Component {
 
 
   render () {
-		const { people, isFetching, lastUpdated, error } = this.props;
+		const { people, isFetching, error } = this.state;
 		return (
 			<div>
 
@@ -32,12 +48,18 @@ class Swapi extends Component {
         }
         {people.length > 0 &&
 					<div style={{ opacity: isFetching ? 0.5 : 1 }}>
-						<Peopl people={people} />
+						<People people={people} />
 					</div>
 				}
 			</div>
     );
   }
+}
+
+Swapi.defaultProps = {
+  people: [],
+  error: {},
+  isFetching: false
 }
 
 Swapi.propTypes = {

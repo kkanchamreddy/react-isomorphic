@@ -43,14 +43,13 @@ export function swapiPeople(state = { }, action) {
   case PEOPLE_GET_SUCCESS:
     let peopleArray = [];
     if(action.req && action.req.data){
-      let data = action.req.data.data;
-      peopleArray = data.children.map(child => child.data);
+      peopleArray  = action.req.data.results;
     }
     return Object.assign({}, state, {
       [action.swapi]: people(state[action.swapi], {
         type: action.type,
         swapi: action.swapi,
-        posts: postsArray,
+        people: peopleArray,
         receivedAt: Date.now()
       })
     });
@@ -60,7 +59,7 @@ export function swapiPeople(state = { }, action) {
       [action.swapi]: posts(state[action.swapi], {
         type: action.type,
         swapi: action.swapi,
-        posts: [],
+        people: [],
         receivedAt: Date.now(),
         error : {
           status: action.error.status,
