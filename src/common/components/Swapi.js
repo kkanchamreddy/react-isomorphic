@@ -15,44 +15,37 @@ const getOriginalState = function() {
 
 class Swapi extends Component {
   constructor(props) {
-    super(props);
-    this.initVars();
+	super(props);
+	this.initVars();
   }
 
-  initVars(props) {
-    this.state = Object.assign({}, Swapi.defaultProps);
+  initVars() {
+	this.state = Object.assign({}, Swapi.defaultProps);
   }
 
   componentDidMount() {
-    this.props.fetchPeopleIfNeeded();
+	this.props.fetchPeopleIfNeeded();
   }
 
   componentWillReceiveProps(nextProps) {
-
+console.log('nextProps---', nextProps);
   }
 
 
   render () {
 		const { people, isFetching, error } = this.state;
+		console.log('-----------People State----',  this.state);
 		return (
 			<div>
 
-        {isFetching &&
-          <h3>Loading...</h3>
-        }
-        {!isFetching && error  &&
-          <h3 className="post-error">There has been an Error</h3>
-        }
-        {!isFetching && !error && people.length === 0 &&
-          <h3>Empty</h3>
-        }
-        {people.length > 0 &&
+	
+				{people.length > 0 &&
 					<div style={{ opacity: isFetching ? 0.5 : 1 }}>
 						<People people={people} />
 					</div>
 				}
 			</div>
-    );
+	);
   }
 }
 

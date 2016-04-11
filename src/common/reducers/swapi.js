@@ -8,7 +8,7 @@ function people(state = {
   error: {},
   isFetching: false,
   didInvalidate: false,
-  items: []
+  people: []
 }, action) {
   switch (action.type) {
   case INVALIDATE_SWAPI:
@@ -24,7 +24,7 @@ function people(state = {
     return Object.assign({}, state, {
       isFetching: false,
       didInvalidate: false,
-      items: action.posts,
+      people: action.people,
       lastUpdated: action.receivedAt
     });
   case PEOPLE_GET_FAILURE:
@@ -38,6 +38,7 @@ function people(state = {
 }
 
 export function swapiPeople(state = { }, action) {
+
   switch (action.type) {
 
   case PEOPLE_GET_SUCCESS:
@@ -45,7 +46,7 @@ export function swapiPeople(state = { }, action) {
     if(action.req && action.req.data){
       peopleArray  = action.req.data.results;
     }
-    return Object.assign({}, state, {
+    var x = Object.assign({}, state, {
       [action.swapi]: people(state[action.swapi], {
         type: action.type,
         swapi: action.swapi,
@@ -53,6 +54,8 @@ export function swapiPeople(state = { }, action) {
         receivedAt: Date.now()
       })
     });
+console.log('x--------',x);
+    return x;
 
   case PEOPLE_GET_FAILURE:
     return Object.assign({}, state, {

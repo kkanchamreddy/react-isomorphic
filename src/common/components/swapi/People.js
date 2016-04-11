@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import {Table, Column, Cell} from 'fixed-data-table';
 
 class People extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			myTableData: [
 				{name: 'Luke Skywalker', hair_color: 'blond', eye_color:'blue'},

@@ -13,7 +13,6 @@ Imgur.need = [
 function mapStateToProps(state) {
   let { imgur } = state;
   imgur = imgur.present;
-  console.log('in Reducer', imgur);
   return { imgur: imgur.items };
 }
 

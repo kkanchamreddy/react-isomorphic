@@ -11,8 +11,9 @@ Swapi.need = [
 ]
 
 function mapStateToProps(state) {
-  let { people } = state;
-
+	let swapiPresent = state.swapi.present.swapi;
+  let people = (swapiPresent && swapiPresent.people) || [];
+console.log('State from mapStateToProps', people);
   return {
     people,
     isFetching : false
