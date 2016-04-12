@@ -46,7 +46,7 @@ export function swapiPeople(state = { }, action) {
     if(action.req && action.req.data){
       peopleArray  = action.req.data.results;
     }
-    var x = Object.assign({}, state, {
+    return Object.assign({}, state, {
       [action.swapi]: people(state[action.swapi], {
         type: action.type,
         swapi: action.swapi,
@@ -54,8 +54,7 @@ export function swapiPeople(state = { }, action) {
         receivedAt: Date.now()
       })
     });
-console.log('x--------',x);
-    return x;
+
 
   case PEOPLE_GET_FAILURE:
     return Object.assign({}, state, {

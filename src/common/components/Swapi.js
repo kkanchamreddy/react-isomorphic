@@ -8,37 +8,33 @@ const defaultProps = {
   isFetching: false
 }
 
-const getOriginalState = function() {
-  var defaultProps = Swapi.defaultProps;
-  return Object.assign({}, defaultProps);
-}
 
 class Swapi extends Component {
   constructor(props) {
-	super(props);
-	this.initVars();
+	  super(props);
+	  this.initVars(props);
   }
 
-  initVars() {
-	this.state = Object.assign({}, Swapi.defaultProps);
+  initVars(props) {
+	this.state = Object.assign({}, props);
   }
 
   componentDidMount() {
-	this.props.fetchPeopleIfNeeded();
+	  this.props.fetchPeopleIfNeeded();
   }
 
   componentWillReceiveProps(nextProps) {
-console.log('nextProps---', nextProps);
+	  console.log('nextProps---', nextProps);
   }
 
 
   render () {
 		const { people, isFetching, error } = this.state;
-		console.log('-----------People State----',  this.state);
+		//console.log('-----------People State----',  this.state);
 		return (
 			<div>
 
-	
+
 				{people.length > 0 &&
 					<div style={{ opacity: isFetching ? 0.5 : 1 }}>
 						<People people={people} />
