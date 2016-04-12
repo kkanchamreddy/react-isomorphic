@@ -26,7 +26,7 @@ export function fetchPeople(swapi = 'reactjs') {
 }
 
 function shouldFetchPeople(state, swapi) {
-  const people = state.swapi[swapi];
+  const people = state.swapi.present[swapi];
   if (!people) {
     return true;
   } else if (people.isFetching) {
@@ -36,7 +36,7 @@ function shouldFetchPeople(state, swapi) {
   }
 }
 
-export function fetchPeopleIfNeeded(swapi='swapi') {
+export function fetchPeopleIfNeeded(swapi='reactjs') {
   return (dispatch, getState) => {
     if (shouldFetchPeople(getState(), swapi)) {
       return dispatch(fetchPeople(swapi));
