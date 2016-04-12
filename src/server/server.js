@@ -70,12 +70,9 @@ app.get('/*', function (req, res) {
 
         const InitialView = (
           <Provider store={store}>
-            {() =>
-              <RouterContext {...renderProps} />
-            }
+            {<RouterContext {...renderProps} />}
           </Provider>
         );
-
         //This method waits for all render component promises to resolve before returning to browser
         fetchComponentDataBeforeRender(store.dispatch, renderProps.components, renderProps.params)
           .then(html => {
@@ -84,7 +81,7 @@ app.get('/*', function (req, res) {
             res.status(200).end(renderFullPage(componentHTML,initialState))
           })
           .catch(err => {
-            console.log(err)
+            console.log('----------InsideCatch---------',err)
             res.end(renderFullPage("",{}))
           });
       });
