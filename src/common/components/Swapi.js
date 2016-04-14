@@ -24,13 +24,11 @@ class Swapi extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-	  console.log('nextProps---', nextProps);
   }
 
 
   render () {
 		const { people, isFetching, error } = this.state;
-		//console.log('-----------People State----',  this.state);
 		return (
 			<div>
 
