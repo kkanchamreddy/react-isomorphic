@@ -17,7 +17,7 @@ export function invalidateSwapi(swapi) {
   };
 }
 
-export function fetchPeople(swapi = 'reactjs') {
+export function fetchPeople(swapi = 'data') {
   return {
     type: PEOPLE_GET,
     swapi,
