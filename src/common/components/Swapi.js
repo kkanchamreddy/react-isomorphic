@@ -31,8 +31,6 @@ class Swapi extends Component {
 		const { people, isFetching, error } = this.state;
 		return (
 			<div>
-
-
 				{people.length > 0 &&
 					<div style={{ opacity: isFetching ? 0.5 : 1 }}>
 						<People people={people} />

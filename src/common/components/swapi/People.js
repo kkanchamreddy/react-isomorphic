@@ -4,29 +4,25 @@ import {Table, Column, Cell} from 'fixed-data-table';
 class People extends Component {
 	constructor(props) {
 		super(props);
+		console.log('Props-----', props);
 		this.state = {
-			myTableData: [
-				{name: 'Luke Skywalker', hair_color: 'blond', eye_color:'blue'},
-				{name: 'Luke Skywalker', hair_color: 'blond', eye_color:'blue'},
-				{name: 'Luke Skywalker', hair_color: 'blond', eye_color:'blue'},
-				{name: 'Luke Skywalker', hair_color: 'blond', eye_color:'blue'},
-			]
-		};
+			people: props.people
+		}
 	}
 
 	render() {
 		return (
 			<Table
-				rowsCount={this.state.myTableData.length}
+				rowsCount={this.state.people.length}
 				rowHeight={50}
 				headerHeight={50}
-				width={1000}
+				width={400}
 				height={500}>
 				<Column
 					header={<Cell>Name</Cell>}
 					cell={props => (
 						<Cell {...props}>
-							{this.state.myTableData[props.rowIndex].name}
+							{this.state.people[props.rowIndex].name}
 						</Cell>
 					)}
 					width={200}
@@ -37,7 +33,7 @@ class People extends Component {
 					width={100}
 					cell={props => (
 						<Cell {...props}>
-							{this.state.myTableData[props.rowIndex].hair_color}
+							{this.state.people[props.rowIndex].hair_color}
 						</Cell>
 					)}
 				/>
@@ -47,7 +43,7 @@ class People extends Component {
 					width={100}
 					cell={props => (
 						<Cell {...props}>
-							{this.state.myTableData[props.rowIndex].eye_color}
+							{this.state.people[props.rowIndex].eye_color}
 						</Cell>
 					)}
 				/>
