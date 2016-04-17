@@ -4,7 +4,6 @@ import {Table, Column, Cell} from 'fixed-data-table';
 class People extends Component {
 	constructor(props) {
 		super(props);
-		console.log('Props-----', props);
 		this.state = {
 			people: props.people
 		}

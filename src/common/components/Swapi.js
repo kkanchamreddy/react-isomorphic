@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import People from './swapi/People';
+import Pagination from './swapi/Pagination';
 
 const defaultProps = {
   people: [],
@@ -15,13 +16,13 @@ class Swapi extends Component {
 	  this.initVars(props);
   }
 
-  initVars(props) {
-	this.state = Object.assign({}, props);
-  }
+	initVars(props) {
+		this.state = Object.assign({}, props);
+	}
 
-  componentDidMount() {
-	  this.props.fetchPeopleIfNeeded();
-  }
+	componentDidMount() {
+		this.props.fetchPeopleIfNeeded();
+	}
 
   componentWillReceiveProps(nextProps) {
   }
@@ -34,6 +35,7 @@ class Swapi extends Component {
 				{people.length > 0 &&
 					<div style={{ opacity: isFetching ? 0.5 : 1 }}>
 						<People people={people} />
+						<Pagination />
 					</div>
 				}
 			</div>
