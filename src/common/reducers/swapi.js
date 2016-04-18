@@ -44,13 +44,14 @@ export function swapiPeople(state = { }, action) {
   switch (action.type) {
 
   case PEOPLE_GET_SUCCESS:
-    let peopleArray = []
+    let peopleArray = [];
+	console.log('action.req------', action.req);
     if(action.req && action.req.data){
       peopleArray  = action.req.data.results;
     }
 
     let x =  Object.assign({}, state, {
-      [action.swapi]: people(state[action.swapi], {
+      data: people(state.data, {
         type: action.type,
         swapi: action.swapi,
 		next: action.req.data.next,
