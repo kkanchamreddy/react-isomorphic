@@ -45,22 +45,20 @@ export function swapiPeople(state = { }, action) {
 
   case PEOPLE_GET_SUCCESS:
     let peopleArray = [];
-	console.log('action.req------', action.req);
+
     if(action.req && action.req.data){
       peopleArray  = action.req.data.results;
     }
 
-    let x =  Object.assign({}, state, {
+    return Object.assign({}, state, {
       data: people(state.data, {
         type: action.type,
-        swapi: action.swapi,
 		next: action.req.data.next,
 		count: action.req.data.count,
         people: peopleArray,
         receivedAt: Date.now()
       })
     });
-	return x;
 
 
   case PEOPLE_GET_FAILURE:

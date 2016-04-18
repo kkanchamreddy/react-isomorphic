@@ -27,7 +27,7 @@ export function fetchPeople(pgNumber="1") {
 }
 
 function shouldFetchPeople(state, swapi) {
-  const people = state.swapi.present[swapi];
+  const people = state.swapi.present.data;
   if (!people) {
     return true;
   } else if (people.isFetching) {
