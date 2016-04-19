@@ -11,7 +11,14 @@ class Pagination extends Component {
 	render() {
 		return (
 			<div>
-				Pagination goes Here
+				<ul className="pager">
+ 					<li>
+						<a href="#">Previous</a>
+ 					</li>
+ 					<li>
+						<a href="#">Next</a>
+ 					</li>
+				</ul>
 			</div>
 		);
 	}
