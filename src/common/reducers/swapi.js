@@ -46,7 +46,6 @@ export function swapiPeople(state = { }, action) {
 
   case PEOPLE_GET_SUCCESS:
     let peopleArray = [];
-console.log('---action.pgNumber--------------',action.pgNumber);
     if(action.req && action.req.data){
       peopleArray  = action.req.data.results;
     }

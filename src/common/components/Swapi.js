@@ -24,7 +24,11 @@ class Swapi extends Component {
 		this.props.fetchPeopleIfNeeded();
 	}
 
+
+
 	componentWillReceiveProps(nextProps) {
+		this.props = nextProps;
+		this.initVars(nextProps);
 	}
 
 

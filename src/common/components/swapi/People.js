@@ -8,6 +8,11 @@ class People extends Component {
 			people: props.people
 		}
 	}
+	componentWillReceiveProps(nextProps) {
+		this.state = {
+			people: nextProps.people
+		}
+	}
 
 	render() {
 		return (

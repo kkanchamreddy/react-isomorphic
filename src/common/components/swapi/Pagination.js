@@ -7,7 +7,8 @@ class Pagination extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		props = nextProps;
+		this.props = nextProps;
+		console.log('------Got the next Props----- in Pagination');
 	}
 
 	bindEvents() {
