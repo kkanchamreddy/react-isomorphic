@@ -37,7 +37,7 @@ function shouldFetchPeople(state) {
   }
 }
 
-export function fetchPeopleIfNeeded(pgNumber="1") {
+export function fetchPeopleIfNeeded(pgNumber=1) {
   return (dispatch, getState) => {
     if (shouldFetchPeople(getState())) {
       return dispatch(fetchPeople(pgNumber));
