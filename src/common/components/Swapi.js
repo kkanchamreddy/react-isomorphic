@@ -11,10 +11,10 @@ const defaultProps = {
 
 
 class Swapi extends Component {
-  constructor(props) {
-	  super(props);
-	  this.initVars(props);
-  }
+	constructor(props) {
+		super(props);
+		this.initVars(props);
+  	}
 
 	initVars(props) {
 		this.state = Object.assign({}, props);
@@ -24,23 +24,23 @@ class Swapi extends Component {
 		this.props.fetchPeopleIfNeeded();
 	}
 
-  componentWillReceiveProps(nextProps) {
-  }
+	componentWillReceiveProps(nextProps) {
+	}
 
 
-  render () {
+	render () {
 		const { people, isFetching, error } = this.state;
 		return (
 			<div>
 				{people.length > 0 &&
 					<div style={{ opacity: isFetching ? 0.5 : 1 }}>
 						<People people={people} />
-						<Pagination />
+						<Pagination {...this.props}/>
 					</div>
 				}
 			</div>
-	);
-  }
+		);
+  	}
 }
 
 Swapi.defaultProps = {

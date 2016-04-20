@@ -17,7 +17,7 @@ export function invalidateSwapi(swapi) {
   };
 }
 
-export function fetchPeople(pgNumber="1") {
+export function fetchPeople(pgNumber=1) {
 
   return {
     type: PEOPLE_GET,
@@ -26,7 +26,7 @@ export function fetchPeople(pgNumber="1") {
   }
 }
 
-function shouldFetchPeople(state, swapi) {
+function shouldFetchPeople(state) {
   const people = state.swapi.present.data;
   if (!people) {
     return true;
@@ -39,7 +39,7 @@ function shouldFetchPeople(state, swapi) {
 
 export function fetchPeopleIfNeeded(pgNumber="1") {
   return (dispatch, getState) => {
-    if (shouldFetchPeople(getState(), pgNumber)) {
+    if (shouldFetchPeople(getState())) {
       return dispatch(fetchPeople(pgNumber));
     }
   };

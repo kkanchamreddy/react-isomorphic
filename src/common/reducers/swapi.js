@@ -25,6 +25,7 @@ function people(state = {
       isFetching: false,
       didInvalidate: false,
       people: action.people,
+	  currentPage: action.currentPage,
 	  count: action.count,
 	  next: action.next,
       lastUpdated: action.receivedAt
@@ -45,19 +46,20 @@ export function swapiPeople(state = { }, action) {
 
   case PEOPLE_GET_SUCCESS:
     let peopleArray = [];
-
+console.log('---action.pgNumber--------------',action.pgNumber);
     if(action.req && action.req.data){
       peopleArray  = action.req.data.results;
     }
 
-    return Object.assign({}, state, {
-      data: people(state.data, {
-        type: action.type,
-		next: action.req.data.next,
-		count: action.req.data.count,
-        people: peopleArray,
-        receivedAt: Date.now()
-      })
+	return Object.assign({}, state, {
+		data: people(state.data, {
+			type: action.type,
+			currentPage: action.pgNumber,
+			next: action.req.data.next,
+			count: action.req.data.count,
+			people: peopleArray,
+			receivedAt: Date.now()
+		})
     });
 
 

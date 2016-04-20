@@ -3,9 +3,27 @@ import React, { Component } from 'react';
 class Pagination extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			people: props.people
-		}
+		this.bindEvents();
+	}
+
+	componentWillReceiveProps(nextProps) {
+		props = nextProps;
+	}
+
+	bindEvents() {
+		this.handlePrevious = this.handlePrevious.bind(this);
+		this.handleNext = this.handleNext.bind(this);
+	}
+
+	handlePrevious (e) {
+		e.preventDefault();
+		const prevPage = (this.props.currentPage - 1)
+		this.props.fetchPeople(prevPage > 0? prevPage : 1);
+	}
+
+	handleNext (e) {
+		e.preventDefault();
+		this.props.fetchPeople(this.props.currentPage + 1);
 	}
 
 	render() {
@@ -13,10 +31,10 @@ class Pagination extends Component {
 			<div>
 				<ul className="pager">
  					<li>
-						<a href="#">Previous</a>
+						<a href="#" onClick = {this.handlePrevious}>Previous</a>
  					</li>
  					<li>
-						<a href="#">Next</a>
+						<a href="#" onClick = {this.handleNext}>Next</a>
  					</li>
 				</ul>
 			</div>
