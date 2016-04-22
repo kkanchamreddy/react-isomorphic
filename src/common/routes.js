@@ -1,4 +1,4 @@
-import { Router, Route, browserHistory } from "react-router";
+import { Route } from "react-router";
 import React from "react";
 
 import App from "./containers/App";
@@ -25,7 +25,6 @@ function lazyLoadComponent(component) {
 }
 
 export default (
-  <Router history={browserHistory}>
     <Route name="app" path="/" component={App}>
         <Route path="home" component={HomePage} />
         <Route path="reddit" component={RedditPage}/>
@@ -38,5 +37,4 @@ export default (
         <Route path="swapi" component={SwapiPage} />
         <Route path="*" component={error404}/>
     </Route>
-  </Router>
 );
