@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router'
 
 class Pagination extends Component {
 	constructor(props) {
@@ -18,13 +19,19 @@ class Pagination extends Component {
 
 	handlePrevious (e) {
 		e.preventDefault();
-		const prevPage = (this.props.currentPage - 1)
-		this.props.fetchPeople(prevPage > 0? prevPage : 1);
+		let prevPage = (this.props.currentPage - 1);
+		prevPage = prevPage > 0? prevPage : 1;
+		this.props.fetchPeople(prevPage);
+		browserHistory.push('/swapi?page' + prevPage);
+		//this.transitionTo('swapi', {}, {page: prevPage});
 	}
 
 	handleNext (e) {
 		e.preventDefault();
-		this.props.fetchPeople(this.props.currentPage + 1);
+		const nextPage = this.props.currentPage + 1;
+		this.props.fetchPeople(nextPage);
+		browserHistory.push('/swapi?page' + nextPage);
+		//this.transitionTo('/swapi', {}, {page: nextPage});
 	}
 
 	render() {
