@@ -17,12 +17,12 @@ export function invalidateSwapi(swapi) {
   };
 }
 
-export function fetchPeople(pgNumber=1) {
+export function fetchPeople(query = { page: 1}) {
 
   return {
     type: PEOPLE_GET,
-    pgNumber,
-    promise: request.get(`http://swapi.co/api/people/?format=json&page=${pgNumber}`)
+    page: parseInt(query.page),
+    promise: request.get(`http://swapi.co/api/people/?format=json&page=${query.page}`)
   }
 }
 
@@ -37,10 +37,10 @@ function shouldFetchPeople(state) {
   }
 }
 
-export function fetchPeopleIfNeeded(pgNumber=1) {
+export function fetchPeopleIfNeeded(query) {
   return (dispatch, getState) => {
     if (shouldFetchPeople(getState())) {
-      return dispatch(fetchPeople(pgNumber));
+      return dispatch(fetchPeople(query));
     }
   };
 }

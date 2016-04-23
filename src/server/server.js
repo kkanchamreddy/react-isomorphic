@@ -74,7 +74,7 @@ app.get('/*', function (req, res) {
           </Provider>
         );
         //This method waits for all render component promises to resolve before returning to browser
-        fetchComponentDataBeforeRender(store.dispatch, renderProps.components, renderProps.params)
+        fetchComponentDataBeforeRender(store.dispatch, renderProps.components, renderProps.location.query)
           .then(html => {
             const componentHTML = renderToString(InitialView);
             const initialState = store.getState();

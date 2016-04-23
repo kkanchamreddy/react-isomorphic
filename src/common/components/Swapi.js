@@ -14,14 +14,14 @@ class Swapi extends Component {
 	constructor(props) {
 		super(props);
 		this.initVars(props);
-  	}
+	}
 
 	initVars(props) {
 		this.state = Object.assign({}, props);
 	}
 
 	componentDidMount() {
-		this.props.fetchPeopleIfNeeded();
+		this.props.fetchPeopleIfNeeded(this.props.location.query);
 	}
 
 

@@ -53,7 +53,7 @@ export function swapiPeople(state = { }, action) {
 	return Object.assign({}, state, {
 		data: people(state.data, {
 			type: action.type,
-			currentPage: action.pgNumber,
+			currentPage: action.page,
 			next: action.req.data.next,
 			count: action.req.data.count,
 			people: peopleArray,

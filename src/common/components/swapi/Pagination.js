@@ -8,11 +8,9 @@ class Pagination extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		
 		if (this.props.location.key !== nextProps.location.key) {
-			this.props.fetchPeople(parseInt(nextProps.location.query.page || 1));
+			this.props.fetchPeople(nextProps.location.query);
 		}
-		//this.props.fetchPeople(nextProps.location.query.page);
 	}
 
 
