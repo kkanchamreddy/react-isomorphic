@@ -64,7 +64,7 @@ export function swapiPeople(state = { }, action) {
 
   case PEOPLE_GET_FAILURE:
     return Object.assign({}, state, {
-      [action.swapi]: posts(state[action.swapi], {
+      data: people(state.data, {
         type: action.type,
         swapi: action.swapi,
         people: [],
