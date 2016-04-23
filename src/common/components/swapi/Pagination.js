@@ -8,9 +8,14 @@ class Pagination extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.props = nextProps;
-		console.log('------Got the next Props----- in Pagination');
+		
+		if (this.props.location.key !== nextProps.location.key) {
+			this.props.fetchPeople(parseInt(nextProps.location.query.page || 1));
+		}
+		//this.props.fetchPeople(nextProps.location.query.page);
 	}
+
+
 
 	bindEvents() {
 		this.handlePrevious = this.handlePrevious.bind(this);
@@ -21,17 +26,14 @@ class Pagination extends Component {
 		e.preventDefault();
 		let prevPage = (this.props.currentPage - 1);
 		prevPage = prevPage > 0? prevPage : 1;
-		this.props.fetchPeople(prevPage);
-		browserHistory.push('/swapi?page' + prevPage);
-		//this.transitionTo('swapi', {}, {page: prevPage});
+		this.context.router.push('/swapi?page=' + prevPage);
+		
 	}
 
 	handleNext (e) {
 		e.preventDefault();
 		const nextPage = this.props.currentPage + 1;
-		this.props.fetchPeople(nextPage);
-		browserHistory.push('/swapi?page' + nextPage);
-		//this.transitionTo('/swapi', {}, {page: nextPage});
+		this.context.router.push('/swapi?page=' + nextPage);
 	}
 
 	render() {
@@ -51,4 +53,7 @@ class Pagination extends Component {
 
 }
 
+Pagination.contextTypes = {
+	router: React.PropTypes.func.isRequired
+};
 export default Pagination;
